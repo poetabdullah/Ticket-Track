@@ -28,10 +28,10 @@ Ticket Track is a simple train booking website that lets you book a train ticket
    git clone https://github.com/your-username/ticket-track.git
    cd ticket-track
 2. **Set up XAMPP**:
-
-3. **Download and install XAMPP**.
+Download and install XAMPP.
 Start Apache and MySQL from the XAMPP control panel.
-Import the database:
+
+3. **Import the database**:
 
 Open phpMyAdmin from the XAMPP control panel.
 Create a new database (e.g., db_tickettrack).
@@ -40,7 +40,8 @@ Import the provided SQL file (allSQL.sql) into the newly created database.
 4. **Configure the project**:
 
 Place the project files in the htdocs directory of your XAMPP installation.
-Access the website:
+
+5. **Access the website**:
 
 Open your web browser and go to http://localhost/ticket-track to access the website.
 
