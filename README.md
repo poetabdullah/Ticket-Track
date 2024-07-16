@@ -75,6 +75,6 @@ Open a pull request.
 @poetabdullah : Worked on homepage, admin panel and their related frontend and backend pages
 @Hamda : Worked on Guides page and its backend and frontend
 
-If you have any questions or suggestions, feel free to open an issue or contact us at your-email@example.com.
+If you have any questions or suggestions, feel free to open an issue or contact us.
 
 Thank you for using Ticket Track!
