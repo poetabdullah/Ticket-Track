@@ -71,9 +71,13 @@ Open a pull request.
 
 ## Contributors:
 @AmbreenAmbi04 : Worked On Booking and its related pages on frontend and backend
+
 @Hammad448 : Worked on Routes and its related pages on frontend and backend
+
 @poetabdullah : Worked on homepage, admin panel and their related frontend and backend pages
+
 @Hamda : Worked on Guides page and its backend and frontend
+
 
 If you have any questions or suggestions, feel free to open an issue or contact us.
 
