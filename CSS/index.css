@@ -1,0 +1,285 @@
+/* Title of the Website */
+
+/* Tagline images slideshow */
+.carousel-indicators li {
+  background-color: white !important;
+  border: 1px solid #777 !important;
+}
+
+.carousel-indicators .active {
+  background-color: #777 !important;
+}
+
+.carousel-item {
+  height: 500px !important;
+}
+
+.carousel-item img {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 500px !important;
+}
+
+.carousel-caption {
+  position: absolute !important;
+  bottom: 50px !important;
+  left: 0 !important; /* Ensure the caption starts at the left edge */
+  right: 0 !important; /* Ensure the caption ends at the right edge */
+  background: rgba(0, 0, 0, 0.5) !important;
+  color: white !important;
+  text-align: center !important;
+  padding: 10px 0 !important;
+  width: 100% !important; /* Ensure the caption takes full width */
+  margin: 0 !important; /* Ensure no extra margin */
+  box-sizing: border-box !important; /* Ensure padding doesn't affect width */
+}
+
+.carousel-caption h3 {
+  margin: 0 !important;
+  font-size: 2rem !important;
+}
+
+/* Custom styles for the search card */
+/* Custom styles for the search card */
+.search-card {
+  margin-top: 80px;
+  margin-bottom: 23px;
+  padding: 20px;
+  border: 1px solid #7fffd4 !important;
+  border-radius: 0px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  background-color: #1d4355 !important;
+  max-width: 1800px; /* Increased max-width for a larger card */
+  width: 100%; /* Ensure it takes the full width available */
+}
+.nav-tabs {
+  width: 100%;
+  border-radius: 20px !important;
+}
+.nav-item {
+  width: 50%;
+  text-align: center;
+}
+.nav-tabs .nav-link {
+  background-color: #66b2b2 !important;
+  color: white;
+  height: 70px;
+  line-height: 25px;
+  font-size: 18px !important;
+  border-radius: 0px !important;
+  font-weight: bold;
+  font-size: 24px !important;
+  border: 1px solid #b2d8d8 !important;
+}
+.nav-tabs .nav-link.active {
+  background-color: #008080 !important;
+  color: white !important;
+  font-weight: bold;
+  font-size: 24px !important;
+}
+.form-control {
+  border-radius: 0px !important;
+  border: 1px solid #b2d8d8 !important;
+  background-color: #008080 !important;
+  color: white !important;
+  height: 70px;
+}
+.form-control::placeholder {
+  color: white !important;
+  font-weight: bold !important;
+  font-size: 18px !important;
+}
+.btn-primary {
+  background-color: #006666 !important;
+  border: 1px solid #b2d8d8 !important;
+  border-radius: 0px !important;
+  height: 70px;
+  padding: 0 20px;
+  font-size: 18px !important;
+  font-weight: bold !important;
+}
+.btn-primary:hover {
+  background-color: #5f9ea0 !important;
+}
+.form-control:focus {
+  background-color: #5f9ea0 !important; /* Change background color when input is focused */
+  box-shadow: 0 0 0 0.2rem rgba(20, 106, 141, 0.25) !important; /* Add a shadow when input is focused */
+}
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between elements */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-tabs .nav-link {
+    font-size: 16px;
+    height: 60px;
+    line-height: 60px;
+  }
+
+  .btn-primary {
+    height: 60px;
+    padding: 0 20px;
+    font-size: 16px;
+  }
+}
+/* Explore Germany */
+.card {
+  border-radius: 20px !important;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(1, 1, 1, 1) !important;
+  background-color: #66b2b2  !important;
+  
+}
+
+.card img {
+  width: 100%;
+  height: 250px !important; /* Set a fixed height for all images */
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card-text,
+.card-text2 {
+  padding: 10px !important;
+  background: none;
+  text-align: center;
+}
+
+.card-text {
+  background-color: #b2d8d8;
+}
+
+.card-text2 {
+  background-color: #66b2b2 !important;
+}
+
+.card h5 {
+  margin-top: 10px;
+  font-size: 1.25rem;
+}
+
+.card p {
+  font-size: 18px;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+  filter: grayscale(50%);
+}
+
+/* Ensure all cards are the same height */
+.col-md-4 .card {
+  height: 100%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row > .col-md-4 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.row > .col-md-4 > .card {
+  flex-grow: 1;
+}
+
+.full-width-image-container {
+  position: relative;
+  width: 100%;
+  height: 500px; /* Set the height to 500px */
+  overflow: hidden;
+  margin-top: 70px;
+}
+.background-image {
+  position: absolute;
+  top: 20;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("images/train10.jpg") no-repeat center center; /* Replace with your image URL */
+  background-size: cover;
+  filter: blur(1.5px); /* Blur effect */
+  z-index: 1;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.3
+  ); /* Optional overlay to darken the image */
+  z-index: 2;
+}
+.centered-content {
+  position: absolute;
+  top: 50%; /* Adjusts the text in the center */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  text-shadow: 6px 6px 8px rgba(10, 10, 10, 1);
+  z-index: 3;
+}
+.display-4 {
+  font-size: 56px !important;
+  font-family: "brush-script";
+}
+.custom-button {
+  background-color: #1d4355 !important; /* Default bootstrap primary color */
+  border: none;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  width: 150px !important;
+  height: 50px !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+  border-radius: 5px !important;
+  color: white !important;
+}
+.custom-button:hover {
+  background-color: #5f9ea0 !important; /* Darker shade for hover effect */
+  color: black !important;
+  font-weight: bold !important;
+}
+
+/* Footer */
+.footer-logo {
+  width: 60px;
+  height: auto;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.bg-custom {
+  background-color: #1d4355 !important;
+}
+.mt-custom {
+  margin-top: 105px;
+}
+
+
+
+
+

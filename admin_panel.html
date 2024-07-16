@@ -1,0 +1,418 @@
+<!-- Important things to consider: -->
+<!-- 1.  only be specific to the admin of the website.-->
+<!-- 2. Will include PHP and maybe some JS in the future.-->
+<!-- 3. This page will not be part of the website, and will only be visible to the admin.-->
+<!-- 4. This page will appear after admin logs in with their credentials.-->
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Admin Panel - Ticket Track</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="CSS/admin_panel.css" />
+    <!-- Bootstrap CSS v5.3.2 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <style>
+    .custom-login-btn {
+      background-color: rgba(226, 17, 17, 0.703) ;
+      border: none;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 10px 20px;
+      margin-left: auto;
+      margin-right: 30px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .custom-login-btn:hover {
+      background-color:#2c6782ea !important;
+      color:black !important;
+      font-size: 26px;
+      box-shadow: 1px 2px 8px black;
+    }
+      .dropdown-item:hover {
+      background-color: #007bff !important;
+      color: white !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid px-0">
+    <div class="row gx-0">
+      <div class="col-md-12">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid navigation px-0">
+            <img
+              src="Images/Ticket Track Card Prototype.png"
+              width="110px"
+              height="90px"
+            />
+            <a class="navbar-brand title" href="index.html">Ticket Track</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavDropdown"
+              aria-controls="navbarNavDropdown"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    aria-current="page"
+                    href="index.html"
+                    style="
+                      color: white;
+                      font-size: 20px;
+                      font-weight: bold;
+                      padding-left: 200px;
+                      font-family: Arial, Helvetica, sans-serif;
+                    "
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    style="
+                      color: white;
+                      font-size: 20px;
+                      font-weight: bold;
+                      padding-left: 20px;
+                      font-family: Arial, Helvetica, sans-serif;
+                    "
+                  >
+                    Book
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="Inter_country.html"
+                        >Inter Country</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="Intra_country.html"
+                        >Intra Country</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="routes.html"
+                    style="
+                      color: white;
+                      font-size: 20px;
+                      font-weight: bold;
+                      padding-left: 20px;
+                      font-family: Arial, Helvetica, sans-serif;
+                    "
+                    >Routes</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="guides.php"
+                    style="
+                      color: white;
+                      font-size: 20px;
+                      font-weight: bold;
+                      padding-left: 20px;
+                      font-family: Arial, Helvetica, sans-serif;
+                      padding-left: 20px;
+                      padding-right: 20px;
+                      white-space: nowrap;
+                    "
+                    >Guide</a
+                  >
+                </li>
+              </ul>
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a
+                    class="nav-link custom-login-btn"
+                    href="user_details.php"
+                    >Users</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>   
+  <!-- Navigation bar ends here-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col text-center admin-heading">
+          <h1>Admin Panel</h1>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+          <div class="form-card">
+            <h2 class="text-center mb-4">Update Route Price</h2>
+            <form id="priceForm">
+              <div class="mb-3">
+                <label for="routeSelectPrice" class="form-label"
+                  >Select Route</label
+                >
+                <select
+                  class="form-control"
+                  id="routeSelectPrice"
+                  name="route"
+                  required
+                >
+                  <!-- Options will be populated dynamically -->
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="priceInput" class="form-label">Update Price</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="priceInput"
+                  name="price"
+                  placeholder="Enter new price"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary w-100">
+                <b>Finalize Price</b>
+              </button>
+            </form>
+            <div id="priceMessage" class="mt-3 text-center"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+          <div class="form-card">
+            <h2 class="text-center mb-4">Alter the Route</h2>
+            <form id="routeForm">
+              <div class="mb-3">
+                <label for="routeSelectAlter" class="form-label"
+                  >Select Route</label
+                >
+                <select class="form-control" id="routeSelectAlter" required>
+                  <!-- Options will be populated dynamically -->
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="newRouteInput" class="form-label"
+                  >Enter New Route</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="newRouteInput"
+                  placeholder="City, Country - City, Country"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary w-100">
+                <b>Update Route</b>
+              </button>
+            </form>
+            <div id="routeMessage" class="mt-3 text-center"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer-->
+    <footer class="footer bg-custom text-light py-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+          <img
+            src="Images\Ticket Track Card Prototype.png"
+            alt="Train Track Logo"
+            class="footer-logo me-2"
+            style="width: 70px; height: 50px"
+          />
+          <span
+            class="fs-4"
+            style="
+              font-family: brush-script;
+              font-size: 30px !important;
+              font-weight: bold;
+            "
+            ><b>Train Track</b></span
+          >
+        </div>
+        <div class="social-icons d-flex">
+          <a
+            href="https://www.facebook.com/raileurope/"
+            target="_blank"
+            class="mx-2"
+            ><img src="Images\facebook.webp" alt="Facebook" class="social-icon"
+          /></a>
+          <a
+            href="https://www.instagram.com/raileurope/?hl=en"
+            target="_blank"
+            class="mx-2"
+            ><img src="Images\insta.png" alt="Instagram" class="social-icon"
+          /></a>
+          <a
+            href="https://www.youtube.com/@CoasterFan2105"
+            target="_blank"
+            class="mx-2"
+            ><img src="Images\youtube.jpg" alt="YouTube" class="social-icon"
+          /></a>
+          <a
+            href="https://www.pinterest.com/search/pins/?rs=ac&len=2&q=train%20europe%20travel&eq=train%20eu&etslf=2744"
+            target="_blank"
+            class="mx-2"
+            ><img src="Images\pint.png" alt="Pinterest" class="social-icon"
+          /></a>
+          <a
+            href="https://x.com/raileurope?lang=en"
+            target="_blank"
+            class="mx-2"
+            ><img src="Images\twitter.webp" alt="Twitter" class="social-icon"
+          /></a>
+        </div>
+      </div>
+      <div class="container text-center mt-3">
+        <small>&copy; 2024 Train Track, Inc. All rights reserved</small>
+      </div>
+    </footer>
+
+    <script src="" async defer></script>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        updateRouteOptions();
+
+        $("#priceForm").submit(function (event) {
+          event.preventDefault();
+
+          $.ajax({
+            url: "update_price.php",
+            type: "POST",
+            data: $(this).serialize(),
+            dataType: "json",
+            success: function (response) {
+              if (response.success) {
+                $("#priceMessage").html(
+                  '<div class="alert alert-success">' +
+                    response.success +
+                    "</div>"
+                );
+                updateRouteOptions();
+              } else if (response.error) {
+                $("#priceMessage").html(
+                  '<div class="alert alert-danger">' + response.error + "</div>"
+                );
+              }
+            },
+            error: function () {
+              $("#priceMessage").html(
+                '<div class="alert alert-danger">There was an error processing your request.</div>'
+              );
+            },
+          });
+        });
+
+        $("#routeForm").submit(function (event) {
+          event.preventDefault();
+
+          var selectedRoute = $("#routeSelectAlter").val();
+          var newRoute = $("#newRouteInput").val();
+          var newRouteParts = newRoute.split("-");
+          if (newRouteParts.length !== 2) {
+            $("#routeMessage").html(
+              '<div class="alert alert-danger">Invalid new route format. Please use "City, Country - City, Country" format.</div>'
+            );
+            return;
+          }
+          var newDeparture = newRouteParts[0].trim();
+          var newArrival = newRouteParts[1].trim();
+
+          $.ajax({
+            type: "POST",
+            url: "update_route.php",
+            data: JSON.stringify({
+              route: selectedRoute,
+              newDeparture: newDeparture,
+              newArrival: newArrival,
+            }),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (response) {
+              if (response.success) {
+                $("#routeMessage").html(
+                  '<div class="alert alert-success">Route updated successfully.</div>'
+                );
+                updateRouteOptions();
+              } else {
+                $("#routeMessage").html(
+                  '<div class="alert alert-danger">' +
+                    response.message +
+                    "</div>"
+                );
+              }
+            },
+            error: function () {
+              $("#routeMessage").html(
+                '<div class="alert alert-danger">There was an error processing your request.</div>'
+              );
+            },
+          });
+        });
+
+        function updateRouteOptions() {
+          $.getJSON("get_routes.php", function (data) {
+            if (data.routes) {
+              var options = data.routes
+                .map(function (route) {
+                  return '<option value="' + route + '">' + route + "</option>";
+                })
+                .join("");
+              $("#routeSelectPrice, #routeSelectAlter").html(options);
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

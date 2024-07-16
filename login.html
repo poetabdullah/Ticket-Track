@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login and Sign Up</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(to right, #2c3e50, #4ca1af);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 100%;
+        max-width: 400px;
+      }
+      .container img {
+        max-width: 100px;
+        margin-bottom: 20px;
+      }
+      .error {
+        color: red;
+        font-size: 0.9em;
+        margin-top: 5px;
+      }
+      .step {
+        display: none;
+      }
+      .step.active {
+        display: block;
+      }
+      .toggle-link {
+        color: #4ca1af;
+        cursor: pointer;
+        display: inline-block;
+      }
+      .toggle-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container text-center">
+      <img src="https://picjj.net/images/2024/06/10/WrCqvT.png" alt="Logo" />
+      <div id="login-form" class="step active">
+        <h2>Login</h2>
+        <div class="mb-3">
+          <label for="login-username" class="form-label"
+            >Username or Gmail</label
+          >
+          <input type="text" class="form-control" id="login-username" />
+          <div id="login-username-error" class="error d-none">
+            Please enter your username or gmail.
+          </div>
+          <div id="login-invalid-error" class="error d-none">
+            Username or password is incorrect.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="login-password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="login-password" />
+          <div id="login-password-error" class="error d-none">
+            Please enter your password.
+          </div>
+        </div>
+        <button class="btn btn-primary w-100" onclick="login()">Login</button>
+        <p class="mt-3">
+          Don't have an account?
+          <span class="toggle-link" onclick="showSignUp()">Sign Up</span>
+        </p>
+      </div>
+
+      <div id="signup-step-1" class="step">
+        <h2>Sign Up</h2>
+        <div class="mb-3">
+          <label for="signup-username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="signup-username" />
+          <div id="signup-username-error" class="error d-none">
+            Username should be alphanumeric and include letters and numbers.
+          </div>
+        </div>
+        <button class="btn btn-primary w-100" onclick="validateUsername()">
+          Next
+        </button>
+      </div>
+
+      <div id="signup-step-2" class="step">
+        <h2>Sign Up</h2>
+        <div class="mb-3">
+          <label for="signup-name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="signup-name" />
+          <div id="signup-name-error" class="error d-none">
+            Please enter your name.
+          </div>
+        </div>
+        <button class="btn btn-secondary w-100 mb-2" onclick="prevStep(1)">
+          Back
+        </button>
+        <button class="btn btn-primary w-100" onclick="nextStep(2)">
+          Next
+        </button>
+      </div>
+
+      <div id="signup-step-3" class="step">
+        <h2>Sign Up</h2>
+        <div class="mb-3">
+          <label for="signup-gender" class="form-label">Gender</label>
+          <select class="form-select" id="signup-gender">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Custom">Custom</option>
+          </select>
+          <div id="signup-gender-error" class="error d-none">
+            Please select your gender.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="signup-age" class="form-label">Age</label>
+          <input type="text" class="form-control" id="signup-age" />
+          <div id="signup-age-error" class="error d-none">
+            Please enter your age.
+          </div>
+        </div>
+        <button class="btn btn-secondary w-100 mb-2" onclick="prevStep(2)">
+          Back
+        </button>
+        <button class="btn btn-primary w-100" onclick="nextStep(3)">
+          Next
+        </button>
+      </div>
+
+      <div id="signup-step-4" class="step">
+        <h2>Sign Up</h2>
+        <div class="mb-3">
+          <label for="signup-gmail" class="form-label">Gmail</label>
+          <input type="email" class="form-control" id="signup-gmail" />
+          <div id="signup-gmail-error" class="error d-none">
+            Please enter a valid Gmail address.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="signup-password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="signup-password" />
+          <div id="signup-password-error" class="error d-none">
+            Password should contain at least 8 characters, including a mix of
+            upper and lower case letters, numbers, and symbols.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="signup-confirm-password" class="form-label"
+            >Confirm Password</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="signup-confirm-password"
+          />
+          <div id="signup-confirm-password-error" class="error d-none">
+            Passwords do not match.
+          </div>
+        </div>
+        <button class="btn btn-secondary w-100 mb-2" onclick="prevStep(3)">
+          Back
+        </button>
+        <button class="btn btn-primary w-100" onclick="signUp()">
+          Sign Up
+        </button>
+        <p class="mt-3">
+          Already have an account?
+          <span class="toggle-link" onclick="showLogin()">Login</span>
+        </p>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      function showLogin() {
+        document.getElementById("login-form").classList.add("active");
+        document.getElementById("signup-step-1").classList.remove("active");
+        document.getElementById("signup-step-2").classList.remove("active");
+        document.getElementById("signup-step-3").classList.remove("active");
+        document.getElementById("signup-step-4").classList.remove("active");
+      }
+
+      function showSignUp() {
+        document.getElementById("login-form").classList.remove("active");
+        document.getElementById("signup-step-1").classList.add("active");
+      }
+
+      function nextStep(step) {
+        const currentStep = document.querySelector(".step.active");
+        currentStep.classList.remove("active");
+        document
+          .getElementById(`signup-step-${step + 1}`)
+          .classList.add("active");
+      }
+
+      function prevStep(step) {
+        const currentStep = document.querySelector(".step.active");
+        currentStep.classList.remove("active");
+        document.getElementById(`signup-step-${step}`).classList.add("active");
+      }
+
+      function validateUsername() {
+        const username = document.getElementById("signup-username").value;
+        const usernameRegex = /^[a-zA-Z0-9]+$/;
+        if (!usernameRegex.test(username)) {
+          document
+            .getElementById("signup-username-error")
+            .classList.remove("d-none");
+        } else {
+          document
+            .getElementById("signup-username-error")
+            .classList.add("d-none");
+          nextStep(1);
+        }
+      }
+
+      function login() {
+        const username = document.getElementById("login-username").value;
+        const password = document.getElementById("login-password").value;
+
+        if (!username) {
+          document
+            .getElementById("login-username-error")
+            .classList.remove("d-none");
+          return;
+        } else {
+          document
+            .getElementById("login-username-error")
+            .classList.add("d-none");
+        }
+
+        if (!password) {
+          document
+            .getElementById("login-password-error")
+            .classList.remove("d-none");
+          return;
+        } else {
+          document
+            .getElementById("login-password-error")
+            .classList.add("d-none");
+        }
+
+        fetch("login.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: `username=${username}&password=${password}`,
+        })
+          .then((response) => response.text())
+          .then((data) => {
+            if (data === "admin") {
+              window.location.href = "admin_panel.html";
+            } else if (data === "success") {
+              localStorage.setItem("loggedInUser", username);
+              window.location.href = "index.html";
+            } else {
+              document
+                .getElementById("login-invalid-error")
+                .classList.remove("d-none");
+            }
+          });
+      }
+
+      function signUp() {
+        const username = document.getElementById("signup-username").value;
+        const name = document.getElementById("signup-name").value;
+        const gender = document.getElementById("signup-gender").value;
+        const age = document.getElementById("signup-age").value;
+        const gmail = document.getElementById("signup-gmail").value;
+        const password = document.getElementById("signup-password").value;
+        const confirmPassword = document.getElementById(
+          "signup-confirm-password"
+        ).value;
+
+        if (!name) {
+          document
+            .getElementById("signup-name-error")
+            .classList.remove("d-none");
+          return;
+        } else {
+          document.getElementById("signup-name-error").classList.add("d-none");
+        }
+
+        if (!gender) {
+          document
+            .getElementById("signup-gender-error")
+            .classList.remove("d-none");
+          return;
+        } else {
+          document
+            .getElementById("signup-gender-error")
+            .classList.add("d-none");
+        }
+
+        if (!age) {
+          document
+            .getElementById("signup-age-error")
+            .classList.remove("d-none");
+          return;
+        } else {
+          document.getElementById("signup-age-error").classList.add("d-none");
+        }
+
+        const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        if (!gmailRegex.test(gmail)) {
+          document
+            .getElementById("signup-gmail-error")
+            .classList.remove("d-none");
+          return;
+        } else {
+          document.getElementById("signup-gmail-error").classList.add("d-none");
+        }
+
+        const passwordRegex =
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        if (!passwordRegex.test(password)) {
+          document
+            .getElementById("signup-password-error")
+            .classList.remove("d-none");
+          return;
+        } else {
+          document
+            .getElementById("signup-password-error")
+            .classList.add("d-none");
+        }
+
+        if (password !== confirmPassword) {
+          document
+            .getElementById("signup-confirm-password-error")
+            .classList.remove("d-none");
+          return;
+        } else {
+          document
+            .getElementById("signup-confirm-password-error")
+            .classList.add("d-none");
+        }
+
+        fetch("signup.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: `username=${username}&name=${name}&gender=${gender}&age=${age}&gmail=${gmail}&password=${password}`,
+        })
+          .then((response) => response.text())
+          .then((data) => {
+            alert(data);
+            if (data === "Signed up successfully.") {
+              showLogin();
+            }
+          });
+      }
+    </script>
+  </body>
+</html>

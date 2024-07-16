@@ -1,0 +1,165 @@
+/* Title of the Website */
+.title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  font-size: 40px !important;
+  padding-left: 20px !important;
+  color: white !important;
+}
+.title:hover {
+  color: black !important;
+}
+/* Navigation Bar */
+.navigation {
+  background-color: #1d4355;
+  padding: 0;
+  margin: 0;
+  margin-top: -8px !important;
+  margin-bottom: -8px !important;
+  /*margin-bottom: -20px; */
+}
+/* Navigation Options */
+.nav-link {
+  color: white !important;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: 20px;
+}
+/* Navigation Options Hover */
+.nav-link:hover {
+  color: black !important;
+}
+/* Remove padding and margin from the container and row */
+.container-fluid {
+  padding: 0;
+  margin: 0;
+}
+.row {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Admin panel heading */
+.admin-heading {
+  margin-top: 40px !important; /* Adjust the margin-top as needed */
+}
+.admin-heading h1 {
+  font-weight: bold !important;
+}
+
+.message {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+.centered-form-container {
+  margin-top: 50px; /* Add margin on top */
+}
+.form-card {
+  padding: 20px;
+  border: 1px solid #0a4b78;
+  border-radius: 0px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #b2d8d8;
+  margin-bottom: 50px;
+}
+.form-control,
+.btn-primary {
+  border-radius: 0px;
+}
+.form-label {
+  font-weight: bold;
+  font-size: 20px !important;
+}
+.btn-primary {
+  background-color: #008080 !important;
+  border-radius: 0px !important;
+  color: white !important;
+  font-size: 20px !important;
+}
+.btn-primary:hover {
+  background-color: #5f9ea0 !important;
+  color: black !important;
+  font-style: bold !important;
+}
+.form-control {
+  border-radius: 0px !important;
+  background-color: #d3d3d3 !important; /* Default background color */
+  color: black !important; /* Default text color */
+}
+.form-control::placeholder {
+  font-weight: bold; /* Make placeholder text bold */
+}
+.form-control:hover,
+.form-control:focus {
+  background-color: #e5e4e2 !important; /* Change background color on hover */
+}
+
+/* Route Updation: */
+
+.centered-form-container {
+  margin-top: 50px; /* Add margin on top */
+}
+.form-card {
+  padding: 20px;
+  border: 1px solid #0a4b78;
+  border-radius: 0px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #b2d8d8;
+  margin-bottom: 50px;
+}
+.form-control,
+.btn-primary {
+  border-radius: 0px;
+}
+.form-label {
+  font-weight: bold;
+  font-size: 20px !important;
+}
+.btn-primary {
+  background-color: #008080 !important;
+  border-radius: 0px !important;
+  color: white !important;
+  font-size: 20px !important;
+}
+.btn-primary:hover {
+  background-color: #5f9ea0 !important;
+  color: black !important;
+  font-style: bold !important;
+}
+.form-control {
+  border-radius: 0px !important;
+  background-color: #d3d3d3 !important; /* Default background color */
+  color: black !important; /* Default text color */
+}
+.form-control::placeholder {
+  font-weight: bold; /* Make placeholder text bold */
+}
+.form-control:hover,
+.form-control:focus {
+  background-color: #e5e4e2 !important; /* Change background color on hover */
+}
+
+/* Footer */
+.footer-logo {
+  width: 60px;
+  height: auto;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.bg-custom {
+  background-color: #1d4355 !important;
+}

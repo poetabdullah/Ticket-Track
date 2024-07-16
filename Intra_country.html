@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ticket Track - Inter Country</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="CSS/style.css" />
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="CSS/nav_bar.css">
+</head>
+
+
+</head>
+<body>
+  <div class="container-fluid px-0">
+    <div class="row gx-0">
+      <div class="col-md-12">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid navigation px-0">
+            <img src="Images/Ticket Track Card Prototype.png" width="110px" height="90px" />
+            <a class="navbar-brand title" href="index.html">Ticket Track</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+              <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="index.html">
+                    <i class="bi bi-house-door"></i> Home
+                  </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-ticket-perforated"></i> Book &#9660;
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="Inter_country.html"><i class="bi bi-globe"></i> Inter Country</a></li>
+                    <li><a class="dropdown-item" href="Intra_country.html"><i class="bi bi-map"></i> Intra Country</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="routes.html">
+                    <i class="bi bi-map"></i> Routes
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="guides.php">
+                    <i class="bi bi-book"></i> Guide
+                  </a>
+                </li>
+              </ul>
+              <ul class="navbar-nav ms-auto" id="nav-user">
+                <li class="nav-item">
+                  <a class="nav-link custom-login-btn" href="login.html">
+                    Login
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+   <!-- Navigation bar ends here-->
+  <!-- Form To Book Tickets -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="container mt-5">
+        <!-- Ticket Card -->
+        <div class="card train-booking-card">
+          <div class="card-body" style="background-color: #9aaeb7;">
+            <!-- Title -->
+            <h2 class="card-title">Train Booking</h2>
+            <!-- Country To Country -->
+            <h3 class="card-title">City to City</h3>
+            <!-- Name of Passenger -->
+            <form id="bookingForm" method="POST" action="intradata.php">
+              <div class="form-group">
+                <label for="name" class="text">Name of Passenger</label>
+                <input type="text" class="form-control box" id="name1" name="name1" placeholder="Enter the name of passenger">
+                <div id="nameError" class="error"></div>
+              </div>
+              <!-- Departure Station -->
+              <div class="form-group">
+                <label for="departure" class="text">Departure Station</label>
+                <select class="form-control box" id="departure1" name="departure1">
+                  <option value="-1">Choose a station</option>
+                </select>
+                <div id="departureError" class="error"></div>
+              </div>
+              <!-- Arrival Station -->
+              <div class="form-group">
+                <label for="arrival" class="text">Arrival Station</label>
+                <select class="form-control box" id="arrival1" name="arrival1">
+                  <option value="-1">Choose a station</option>
+                </select>
+                <div id="arrivalError" class="error"></div>
+              </div>
+              <!-- Date of Travel -->
+              <div class="form-group">
+                <label for="date" class="text">Date of Travel</label>
+                <input type="date" class="form-control box" id="date1" name="date1">
+                <div id="dateError" class="error"></div>
+              </div>
+              <!-- Time of Travel -->
+              <div class="form-group">
+                <label for="time" class="text">Time</label>
+                <select class="form-control box" id="time1" name="time1">
+                  <option value="-1">Choose the time</option>
+                  <option value="09:00 A.M">09:00 A.M</option>
+                  <option value="01:00 P.M">01:00 P.M</option>
+                  <option value="05:00 P.M">05:00 P.M</option>
+                </select>
+              </div>
+              <!-- Category -->
+              <div class="form-group">
+                <label for="category" class="text">Category of Seat</label>
+                <select class="form-control box" id="category1" name="category1">
+                  <option value="-1">Choose the seat category</option>
+                  <option value="Window">Window</option>
+                  <option value="Aisle">Aisle</option>
+                </select>
+              </div>
+              <!-- Number of Passengers -->
+              <div class="form-group">
+                <label for="passengers" class="text">Number of Passengers</label>
+                <input type="number" class="form-control box" id="passengers1" name="passengers1" min="1" max="20" placeholder="Enter the number of passengers">
+              </div>
+              <!-- Book Ticket Button -->
+              <button type="submit" class="btn btn-light" style="margin-top:15px; font-weight:bold; font-size:18px;">Book Now</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br><hr>
+
+  <!-- Footer -->
+  <footer class="footer bg-custom text-light py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <img src="Images/Ticket Track Card Prototype.png" alt="Train Track Logo" class="footer-logo me-2" style="width: 70px; height: 50px" />
+        <span class="fs-4" style="font-family: brush-script; font-size: 30px !important; font-weight: bold;"><b>Train Track</b></span>
+      </div>
+      <div class="social-icons d-flex">
+        <a href="https://www.facebook.com/raileurope/" target="_blank" class="mx-2"><img src="Images/facebook.webp" alt="Facebook" class="social-icon" /></a>
+        <a href="https://www.instagram.com/raileurope/?hl=en" target="_blank" class="mx-2"><img src="Images/insta.png" alt="Instagram" class="social-icon" /></a>
+        <a href="https://www.youtube.com/@CoasterFan2105" target="_blank" class="mx-2"><img src="Images/youtube.jpg" alt="YouTube" class="social-icon" /></a>
+        <a href="https://www.pinterest.com/search/pins/?rs=ac&len=2&q=train%20europe%20travel&eq=train%20eu&etslf=2744" target="_blank" class="mx-2"><img src="Images/pint.png" alt="Pinterest" class="social-icon" /></a>
+        <a href="https://x.com/raileurope?lang=en" target="_blank" class="mx-2"><img src="Images/twitter.webp" alt="Twitter" class="social-icon" /></a>
+      </div>
+    </div>
+    <div class="container text-center mt-3">
+      <small>&copy; 2024 Train Track, Inc. All rights reserved.</small>
+    </div>
+  </footer>
+  <script
+  src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+  integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+  integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+  crossorigin="anonymous"
+></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBogGzA0pV0N02eT8FxPqcAHNsbtPC4e1BiM+9B8COSTjQK/" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-pprn3073KE6tl6ARrA6FZg2I6A2T9um6fquU6skmYlg6LRt63GoYf5D5LuL0S3CF" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+      // Counter to keep track of seat numbers
+      let seatCounter = 0;
+
+      // Function to generate a unique seat number
+      function generateUniqueSeatNumber() {
+        const timestamp = Date.now();
+        seatCounter++;
+        return `SN-${timestamp}-${seatCounter}`;
+      }
+
+      // Fetch city routes
+      $.ajax({
+        url: 'get_city_routes.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+          if (data.status === 'success') {
+            const routes = data.routes;
+            const departureSelect = $('#departure1');
+            const arrivalSelect = $('#arrival1');
+
+            routes.forEach(function(route) {
+              const departureOption = new Option(route.departure, route.departure);
+              const arrivalOption = new Option(route.arrival, route.arrival);
+              departureSelect.append(departureOption);
+              arrivalSelect.append(arrivalOption);
+            });
+          } else {
+            console.error('Error fetching city routes:', data.message);
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error('Error fetching city routes:', status, error);
+        }
+      });
+
+      // Form submission
+      $('#bookingForm').on('submit', function(event) {
+        event.preventDefault();
+        
+        const name = $('#name1').val();
+        const departure = $('#departure1').val();
+        const arrival = $('#arrival1').val();
+        const date = $('#date1').val();
+        const time = $('#time1').val();
+        const category = $('#category1').val();
+        const passengers = parseInt($('#passengers1').val());
+        
+        const nameError = $('#nameError');
+        const departureError = $('#departureError');
+        const arrivalError = $('#arrivalError');
+        const dateError = $('#dateError');
+
+        // Clear previous error messages
+        nameError.text('');
+        departureError.text('');
+        arrivalError.text('');
+        dateError.text('');
+
+        let valid = true;
+
+        // Check passenger name contains only alphabets
+        const namePattern = /^[A-Za-z\s]+$/;
+        if (!namePattern.test(name)) {
+          nameError.text('Name must contain only alphabets.');
+          valid = false;
+        }
+
+        // Check if departure and arrival stations are not the same
+        if (departure === arrival) {
+          departureError.text('Please enter a valid departure station.');
+          arrivalError.text('Please enter a valid arrival station.');
+          valid = false;
+        }
+
+        // Check if date is not in the past
+        const currentDate = new Date();
+        const selectedDate = new Date(date);
+        if (selectedDate < currentDate.setHours(0,0,0,0)) {
+          dateError.text('Please enter a valid date.');
+          valid = false;
+        }
+
+        // Check if all fields are filled
+        if (!departure || !arrival || !date || !passengers || !time || !name || !category) {
+          alert('Please fill in all fields.');
+          valid = false;
+        }
+
+        if (valid) {
+          const formData = new FormData();
+          formData.append('name1', name);
+          formData.append('departure1', departure);
+          formData.append('arrival1', arrival);
+          formData.append('date1', date);
+          formData.append('time1', time);
+          formData.append('category1', category);
+          formData.append('passengers1', passengers);
+
+          fetch('intradata.php', {
+            method: 'POST',
+            body: formData
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.status === 'success') {
+              alert('Data saved successfully to the database');
+              
+              localStorage.setItem('name1', name);
+              localStorage.setItem('departure1', departure);
+              localStorage.setItem('arrival1', arrival);
+              localStorage.setItem('date1', date);
+              localStorage.setItem('time1', time);
+              localStorage.setItem('category1', category);
+              localStorage.setItem('passengers1', passengers);
+
+              window.location.href = 'Booked_Ticket_Intra.html';
+            } else {
+              alert('Error saving data to the database: ' + data.message);
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('Error processing request.');
+          });
+        }
+      });
+    });
+  </script>
+  <script src="user.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-tnuAQdXBczz8hbNfjF1GeJ9tmh1d5BXUqj3roK54Kk51l1Zo7d1O69FdoZh0yI9G" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-8rCF9LYbAwV5w2ipIeeC7XqDfJtP/40MeNnVsReUktd57p12Xwxfp7LVGmPhT9B+" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

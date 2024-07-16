@@ -1,0 +1,160 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+
+/* Nav bar ends here */
+.banner {
+  position: relative;
+  text-align: center;
+  color: rgb(167, 85, 85);
+  margin-top: 60px;
+}
+
+.bannerimg {
+  width: 82%;
+  height: 400px;
+}
+
+.banner-text {
+  position: absolute;
+  top: 75%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.banner-text h4 {
+  font-size: 35px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.content .p {
+  text-align: justify;
+  color: teal;
+}
+
+/* Sidebar */
+.sidebar .image-container {
+  position: relative;
+  margin-top: 55px;
+}
+.sidebar .image-container img {
+  width: 100%;
+  height: auto;
+}
+.description {
+  margin-top: 10px;
+  font-size: 1em;
+  color: #333;
+  text-align: center;
+}
+
+/* Questions */
+.question {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Stations */
+.h2 .stations {
+  font-weight: bold;
+}
+.p .stations {
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 20px;
+}
+.stations {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+/* About Section */
+.about-section {
+  padding: 50px 0;
+  background-color: #f8f9fa;
+}
+.about-heading {
+  text-align: left;
+  margin-bottom: 30px;
+  color: teal;
+  font-size: 67px;
+}
+.about-image {
+  height: 500px;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto 30px;
+}
+.our-story {
+  margin-bottom: 50px;
+  text-align: justify;
+}
+.our-approach {
+  margin-bottom: 50px;
+  text-align: justify;
+}
+
+/* Footer */
+.footer {
+  position: relative;
+}
+#helpButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: teal;
+}
+
+.footer-logo {
+  width: 60px;
+  height: auto;
+}
+.social-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.bg-custom {
+  background-color: #1d4355 !important;
+}
+.mt-custom {
+  margin-top: 50px !important;
+}
+.text-light {
+  color: white !important;
+}
+.py-3 {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+.d-flex {
+  display: flex !important;
+}
+.justify-content-between {
+  justify-content: space-between !important;
+}
+.align-items-center {
+  align-items: center !important;
+}
+.fs-4 {
+  font-size: 1.25rem !important;
+}
+.me-2 {
+  margin-right: 0.5rem !important;
+}
+.mt-3 {
+  margin-top: 1rem !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.niv{
+
+  gap: 5px !important;
+}

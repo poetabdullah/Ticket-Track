@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ticket Track - Booked Ticket Intra</title>
+    <!-- Bootstrap CSS v5.3.2 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="CSS/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="ticket">
+        <div class="ticket-left">
+          <div class="ticket-header">
+            <h2>TRAIN TICKET</h2>
+          </div>
+          <div class="details">
+            <label>NAME OF PASSENGER:</label>
+            <p id="intra_name"></p>
+          </div>
+          <div class="details">
+            <label>DEPARTURE STATION:</label>
+            <p id="intra_departure"></p>
+          </div>
+          <div class="details">
+            <label>ARRIVAL STATION:</label>
+            <p id="intra_arrival"></p>
+          </div>
+          <div class="details">
+            <label>DATE:</label>
+            <p id="intra_date"></p>
+          </div>
+          <div class="details">
+            <label>TIME:</label>
+            <p id="intra_time"></p>
+          </div>
+          <div class="details">
+            <label>CATEGORY:</label>
+            <p id="intra_category"></p>
+          </div>
+          <div class="details">
+            <label>NUMBER OF PASSENGERS:</label>
+            <p id="intra_passengers"></p>
+          </div>
+          <div class="details">
+            <label>SEAT NUMBERS:</label>
+            <ul id="intra_seat_numbers"></ul>
+          </div>
+          <!-- Print Button -->
+          <div class="text-center mt-4">
+            <button id="printTicket" class="btn btn-secondary">
+              Print Ticket
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const intra_name = localStorage.getItem("intra_name");
+        const intra_departure = localStorage.getItem("intra_departure");
+        const intra_arrival = localStorage.getItem("intra_arrival");
+        const intra_date = localStorage.getItem("intra_date");
+        const intra_time = localStorage.getItem("intra_time");
+        const intra_category = localStorage.getItem("intra_category");
+        const intra_passengers = parseInt(
+          localStorage.getItem("intra_passengers"),
+          10
+        );
+
+        const intra_nameElement = document.getElementById("intra_name");
+        const intra_departureElement =
+          document.getElementById("intra_departure");
+        const intra_arrivalElement = document.getElementById("intra_arrival");
+        const intra_dateElement = document.getElementById("intra_date");
+        const intra_timeElement = document.getElementById("intra_time");
+        const intra_categoryElement = document.getElementById("intra_category");
+        const intra_passengersElement =
+          document.getElementById("intra_passengers");
+
+        if (intra_nameElement) {
+          intra_nameElement.textContent = intra_name || "";
+        }
+        if (intra_departureElement) {
+          intra_departureElement.textContent = intra_departure || "";
+        }
+        if (intra_arrivalElement) {
+          intra_arrivalElement.textContent = intra_arrival || "";
+        }
+        if (intra_dateElement) {
+          intra_dateElement.textContent = intra_date || "";
+        }
+        if (intra_timeElement) {
+          intra_timeElement.textContent = intra_time || "";
+        }
+        if (intra_categoryElement) {
+          intra_categoryElement.textContent = intra_category || "";
+        }
+        if (intra_passengersElement) {
+          intra_passengersElement.textContent = intra_passengers || "";
+        }
+
+        const seatNumbersList = document.getElementById("intra_seat_numbers");
+
+        function generateUniqueSeatNumber(index) {
+          const timestamp = Date.now();
+          return `SN-${timestamp}-${index}`;
+        }
+
+        for (let i = 1; i <= intra_passengers; i++) {
+          const seatNumber = generateUniqueSeatNumber(i);
+          const listItem = document.createElement("li");
+          listItem.textContent = seatNumber;
+          seatNumbersList.appendChild(listItem);
+        }
+      });
+
+      // Print ticket with delay
+      document
+        .getElementById("printTicket")
+        .addEventListener("click", function () {
+          setTimeout(function () {
+            window.print();
+          }, 1000); // 1000 milliseconds = 1 second delay
+        });
+    </script>
+  </body>
+</html>

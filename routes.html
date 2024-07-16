@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fares and Routes - Ticket Track</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+        rel="stylesheet"
+      />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="CSS/routes_styling.css">
+    <link rel="stylesheet" href="CSS/nav_bar.css">
+    
+    
+</head>
+
+      <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to send AJAX request to route_admin.php
+            function loadBackend() {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "route_admin.php", true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        console.log("Backend reloaded successfully");
+                        // You can process the response if needed
+                        console.log(xhr.responseText);
+                    }
+                };
+                xhr.send();
+            }
+
+            // Call the function to load the backend
+            loadBackend();
+        });
+    </script>
+
+</head>
+<body>
+  <div class="container-fluid px-0">
+    <div class="row gx-0">
+      <div class="col-md-12">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid navigation px-0">
+            <img src="Images/Ticket Track Card Prototype.png" width="110px" height="90px" />
+            <a class="navbar-brand title" href="index.html">Ticket Track</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+              <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="index.html">
+                    <i class="bi bi-house-door"></i> Home
+                  </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-ticket-perforated"></i> Book &#9660;
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="Inter_country.html"><i class="bi bi-globe"></i> Inter Country</a></li>
+                    <li><a class="dropdown-item" href="Intra_country.html"><i class="bi bi-map"></i> Intra Country</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="routes.html">
+                    <i class="bi bi-map"></i> Routes
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="guides.php">
+                    <i class="bi bi-book"></i> Guide
+                  </a>
+                </li>
+              </ul>
+              <ul class="navbar-nav ms-auto" id="nav-user">
+                <li class="nav-item">
+                  <a class="nav-link custom-login-btn" href="login.html">
+                    Login
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+   <!-- Navigation bar ends here-->       
+    <div class="header">
+        <h1>Fares and Routes</h1>
+        <p>Travel between Germany, Netherlands, and Belgium</p>
+    </div>
+    <br><br>
+
+
+    <div class="row no-gutters">
+        <div class="col-md-6">
+            <div class="navigation-card intra-city-card" onclick="showSection('intra-city')">
+                <div class="overlay"></div>
+                <div class="card-body">
+                    <h3>Intra City</h3>
+                    <p>Explore more about the cities for travel</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="navigation-card intra-country-card" onclick="showSection('intra-country')">
+                <div class="overlay"></div>
+                <div class="card-body">
+                    <h3>Intra Country</h3>
+                    <p>Explore more about the countries for travel.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="home">
+    <!--TABLE STARTS HERE-->
+         <div class="table-container">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="nav-heading">
+                        <th colspan="4" id="intraCityHeading" class="heading active" onclick="showIntraCityTable();">
+                            City - City stations (Intra-Country)</th>
+                        <th colspan="4" id="intraCountryHeading" class="heading" onclick="showIntraCountryTable();">
+                            Country - Country stations (Inter-Country)</th>
+                    </tr>
+                    <tr>
+                        <th>Route no</th>
+                        <th>Departure Station</th>
+                        <th>Arrival Station</th>
+                        <th>Departure Time</th>
+                        <th>Arrival Time</th>
+                        <th>Distance</th>
+                        <th>Fare (&euro;)</th>
+                        <th>Time Taken</th>
+                    </tr>
+                </thead>
+                <tbody id="intraCityTable"></tbody>
+                <tbody id="intraCountryTable" style="display: none;"></tbody>
+            </table>
+            <div class="controls">
+                <button class="control prev" id="prev">&lt;</button>
+                <button class="control next" id="next">&gt;</button>
+            </div></div>
+            <!--TABLE ENDS HERE-->
+       <br><br>
+    
+<!--TRAVEL GUIDLINES SECTION-->
+        <div class="row">
+            <div class="col-md-8">
+                <div class="home">
+                    <h2>Travel Guidelines</h2>
+                    <p>Ensure you have your tickets and identification ready for inspection at all times. Adhere to
+                        local COVID-19 guidelines and safety protocols.</p>
+                    <p>For international travel, check the visa requirements and travel advisories for the destination
+                        country.</p>
+                    <h3>Additional Travel Guidelines</h3>
+                    <ul>
+                        <li><strong>Luggage:</strong> Keep your luggage secured and within your sight. Use luggage racks
+                            and make sure your belongings are clearly labeled with your name and contact information.
+                        </li>
+                        <li><strong>Punctuality:</strong> Arrive at the station at least 15 minutes before your
+                            departure time. Train schedules are precise, and it’s important to be on time.</li>
+                        <li><strong>Comfort:</strong> Wear comfortable clothing and carry a small pillow or neck support
+                            for long journeys. Bringing snacks and water can make your trip more pleasant.</li>
+                        <li><strong>Noise Levels:</strong> Be considerate of other passengers. Keep noise levels down,
+                            especially during night travel, and use headphones if listening to music or watching videos.
+                        </li>
+                        <li><strong>Safety:</strong> Stay aware of your surroundings and report any suspicious activity
+                            to train staff. Familiarize yourself with the emergency procedures outlined on the train.
+                        </li>
+                        <li><strong>Health:</strong> Move around the train periodically to stretch and improve
+                            circulation, especially on long trips. Carry hand sanitizer and maintain hygiene.</li>
+                    </ul>
+                    <h3>Travel Tips</h3>
+                    <ul>
+                        <li>Book tickets in advance to secure the best prices.</li>
+                        <li>Travel during off-peak hours to avoid crowds.</li>
+                        <li>Keep a digital copy of your ticket and identification for backup.</li>
+                    </ul>
+                </div>
+               
+
+            </div>
+            
+
+            <div class="col-md-4">
+                <div class="info-card">
+                    <div class="image-container">
+                        <img src="https://static.vecteezy.com/system/resources/previews/023/527/498/original/no-food-allowed-sign-symbol-icon-prohibition-sign-transparent-background-free-png.png"
+                            alt="No Outside Food Allowed">
+                    </div>
+                    <div class="guidelines-text">
+                        <h3>No Outside Food Allowed</h3>
+                        <p>For your convenience and safety, outside food is not permitted during train travel. We
+                            provide complimentary meals and snacks to all passengers. Our menu includes a variety of
+                            options to cater to different dietary needs and preferences. Please enjoy the food provided
+                            and refrain from bringing outside food on board.</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="image-container">
+                        <img src="https://media.istockphoto.com/id/1216034420/photo/no-smoking-sign-isolated-on-white-with-clipping-path.jpg?s=612x612&w=0&k=20&c=4f7TAi0Fsmah-lBc6NAEJjc2WIHVfQN0Ym9C51gNYhg="
+                            alt="No Smoking Allowed">
+                    </div>
+                    <div class="guidelines-text">
+                        <h3>No Smoking Allowed</h3>
+                        <p>Smoking is strictly prohibited on the train for the health and safety of all passengers. This
+                            includes the use of electronic cigarettes and vaping devices. Please respect this policy to
+                            ensure a comfortable and pleasant journey for everyone. We appreciate your cooperation in
+                            maintaining a smoke-free environment.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+         <!--TRAVEL GULDINE SECTION ENDED-->
+    </div>
+    <br>
+    <br></div>
+    <!--HOME DIV ENDED-->
+
+    <div id="intra-city" class="hidden">
+        <div class="back-button" onclick="showSection('home')">Back</div>
+        <h1 style="font-size: xx-large;text-align: center;">Intra City</h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="fare-card">
+                    <img src="https://media.istockphoto.com/id/503874284/photo/berlin-skyline-with-spree-river-at-sunset-germany.jpg?s=612x612&w=0&k=20&c=gnrw-SQQq9Niao93SU4djAgGXi-5LRBNkSRiwwX96Tk="
+                        alt="Berlin to Leipzig">
+                    <div class="card-body">
+                        <p><strong>Berlin to Leipzig</strong></p>
+                        <p>Berlin, known for its rich history and vibrant culture, connects easily with Leipzig, a city
+                            famed for its musical heritage and beautiful architecture. Travel swiftly between these two
+                            iconic cities and enjoy the diverse experiences each has to offer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="fare-card">
+                    <img src="https://images.pexels.com/photos/2106452/pexels-photo-2106452.jpeg?cs=srgb&dl=pexels-juv-686879-2106452.jpg&fm=jpg"
+                        alt="Frankfurt to Cologne">
+                    <div class="card-body">
+                        <p><strong>Frankfurt to Cologne</strong></p>
+                        <p>Travel from Frankfurt, the financial hub of Germany, to Cologne, home to the stunning Cologne
+                            Cathedral and a lively cultural scene. This quick journey connects two of Germany's most
+                            dynamic cities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="fare-card">
+                    <img src="https://media.istockphoto.com/id/1404367849/photo/old-town-hall-of-munich-germany.jpg?s=612x612&w=0&k=20&c=oJiQWSkoIVYbrjaDjvGSpWRfrb2QufIHWeflHqc_m5A="
+                        alt="Munich to Nuremberg">
+                    <div class="card-body">
+                        <p><strong>Munich to Nuremberg</strong></p>
+                        <p>Journey from Munich, known for its beer gardens and rich history, to Nuremberg, a city with a
+                            vibrant old town and significant World War II history. A short trip that offers a glimpse
+                            into Bavaria's past and present.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="fare-card">
+                    <img src="https://images.pexels.com/photos/221529/pexels-photo-221529.jpeg?cs=srgb&dl=pexels-pixabay-221529.jpg&fm=jpg"
+                        alt="Hamburg to Bremen">
+                    <div class="card-body">
+                        <p><strong>Hamburg to Bremen</strong></p>
+                        <p>Experience the maritime charm of Hamburg before heading to Bremen, known for its historic
+                            architecture and the famous Bremen Town Musicians. This quick and scenic route is perfect
+                            for a day trip.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="fare-card">
+                    <img src="https://media.istockphoto.com/id/1442596557/photo/aerial-view-of-schlossplatz-in-stuttgart-germany.jpg?s=612x612&w=0&k=20&c=Ii0mHed4yKoSENYD_bYHyTWWdSmjVUrXnXiAGlTwV-Y="
+                        alt="Stuttgart to Munich">
+                    <div class="card-body">
+                        <p><strong>Stuttgart to Munich</strong></p>
+                        <p>From the automotive hub of Stuttgart, travel to Munich, a city known for its vibrant cultural
+                            scene, beer halls, and annual Oktoberfest. Enjoy a comfortable and scenic trip between these
+                            two major cities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="intra-country" class="hidden">
+        <div class="back-button" onclick="showSection('home')">Back</div>
+        <h1 style="text-align: center; font-size: xx-large;">Intra Country</h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="fare-card">
+                    <img src="https://www.shutterstock.com/image-photo/brussels-belgium-june-15-2023-600nw-2321822005.jpg"
+                        alt="Frankfurt to Brussels">
+                    <div class="card-body">
+                        <p><strong style="font-size: 22px;">Frankfurt to Brussels</strong></p>
+                        <p>Travel from Frankfurt, a city of contrasts with its modern skyline and historic roots, to
+                            Brussels, the heart of European politics and rich cultural heritage. This journey offers a
+                            seamless blend of business and leisure.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="fare-card">
+                    <img src="https://res.klook.com/image/upload/fl_lossy.progressive/q_auto/c_fill,w_750/blogen/2019/12/amsterdam-1910176.jpg"
+                        alt="Frankfurt to Amsterdam">
+                    <div class="card-body">
+                        <p><strong style="font-size: 22px;">Frankfurt to Amsterdam</strong></p>
+                        <p>Embark on a scenic trip from Frankfurt to Amsterdam, a city renowned for its picturesque
+                            canals, artistic heritage, and vibrant nightlife. This route promises an enriching travel
+                            experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="fare-card">
+                    <img src="https://media.istockphoto.com/id/1310078415/photo/brussels-belgium.jpg?s=612x612&w=0&k=20&c=A0VE1kOJtHLCLFph8xNpvxjdYwTk2kExwSUGUZo__9o="
+                        alt="Amsterdam to Brussels">
+                    <div class="card-body">
+                        <p><strong style="font-size: 22px;">Amsterdam to Brussels</strong></p>
+                        <p>Journey from the artistic allure of Amsterdam to the historic charm of Brussels. This quick
+                            trip connects two of Europe's most iconic cities, offering a perfect blend of culture and
+                            history.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+     <!-- Footer-->
+     <footer class="footer mt-custom bg-custom text-light py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center">
+            <img
+              src="Images\Ticket Track Card Prototype.png"
+              alt="Train Track Logo"
+              class="footer-logo me-2"
+              style="width: 70px; height: 50px"
+            />
+            <span
+              class="fs-4"
+              style="
+                font-family: brush-script;
+                font-size: 30px !important;
+                font-weight: bold;
+              "
+              ><b>Train Track</b></span
+            >
+          </div>
+          <div class="social-icons d-flex">
+            <a
+              href="https://www.facebook.com/raileurope/"
+              target="_blank"
+              class="mx-2"
+              ><img src="Images\facebook.webp" alt="Facebook" class="social-icon"
+            /></a>
+            <a
+              href="https://www.instagram.com/raileurope/?hl=en"
+              target="_blank"
+              class="mx-2"
+              ><img src="Images\insta.png" alt="Instagram" class="social-icon"
+            /></a>
+            <a
+              href="https://www.youtube.com/@CoasterFan2105"
+              target="_blank"
+              class="mx-2"
+              ><img src="Images\youtube.jpg" alt="YouTube" class="social-icon"
+            /></a>
+            <a
+              href="https://www.pinterest.com/search/pins/?rs=ac&len=2&q=train%20europe%20travel&eq=train%20eu&etslf=2744"
+              target="_blank"
+              class="mx-2"
+              ><img src="Images\pint.png" alt="Pinterest" class="social-icon"
+            /></a>
+            <a
+              href="https://x.com/raileurope?lang=en"
+              target="_blank"
+              class="mx-2"
+              ><img src="Images\twitter.webp" alt="Twitter" class="social-icon"
+            /></a>
+          </div>
+        </div>
+        <div class="container text-center mt-3">
+          <small>&copy; 2024 Train Track, Inc. All rights reserved</small>
+        </div>
+      </footer>
+      <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"
+  ></script>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"
+  ></script>
+    <script>
+        /*function toggleInfo(button) {
+             var fareCard = button.parentElement.parentElement;
+             fareCard.classList.toggle('expanded');
+         }*/
+
+        function showSection(sectionId) {
+            // Hide all sections
+            document.getElementById('home').classList.add('hidden');
+            document.getElementById('intra-city').classList.add('hidden');
+            document.getElementById('intra-country').classList.add('hidden');
+
+            // Show the selected section
+            document.getElementById(sectionId).classList.remove('hidden');
+
+            // Remove active class from all links
+            document.getElementById('link-home').classList.remove('active');
+            document.getElementById('link-intra-city').classList.remove('active');
+            document.getElementById('link-intra-country').classList.remove('active');
+
+            // Add active class to the clicked link
+            document.getElementById('link-' + sectionId).classList.add('active');
+        }
+
+        window.onscroll = function () {
+            var footer = document.querySelector('.footer');
+            if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
+                footer.style.bottom = '0';
+            } else {
+                footer.style.bottom = '-50px';
+            }
+        };
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('fetch_data.php')
+                .then(response => response.json())
+                .then(data => {
+                    populateTable(data.IntraCountryMorning, 'intraCityTable', 'morning');
+                    populateTable(data.IntraCountryAfternoon, 'intraCityTable', 'afternoon');
+                    populateTable(data.IntraCountryEvening, 'intraCityTable', 'evening');
+                    populateTable(data.InterCountryMorning, 'intraCountryTable', 'morning');
+                    populateTable(data.InterCountryAfternoon, 'intraCountryTable', 'afternoon');
+                    populateTable(data.InterCountryEvening, 'intraCountryTable', 'evening');
+
+                    // Initialize display
+                    showIntraCityTable();
+                });
+
+            function populateTable(data, tableId, timeOfDay) {
+                const tableBody = document.getElementById(tableId);
+                data.forEach((row, index) => {
+                    if (index === 0) {
+                        const timingHeader = document.createElement('tr');
+                        timingHeader.classList.add('timing-header', timeOfDay);
+                        timingHeader.style.backgroundColor = timeOfDay === 'morning' ? 'rgba(100, 148, 237, 0.344)' : timeOfDay === 'afternoon' ? 'rgba(251, 171, 22, 0.563)' : 'rgba(228, 11, 11, 0.392)';
+                        timingHeader.innerHTML = `<td colspan="8">${timeOfDay.charAt(0).toUpperCase() + timeOfDay.slice(1)} Timings</td>`;
+                        tableBody.appendChild(timingHeader);
+                    }
+                    const rowElement = document.createElement('tr');
+                    rowElement.classList.add(timeOfDay);
+                    rowElement.innerHTML = `
+                        <td>${row.route_no}</td>
+                        <td>${row.departure_station}</td>
+                        <td>${row.arrival_station}</td>
+                        <td>${row.departure_time}</td>
+                        <td>${row.arrival_time}</td>
+                        <td>${row.distance}</td>
+                        <td>${row.fare}</td>
+                        <td>${row.time_taken}</td>
+                    `;
+                    tableBody.appendChild(rowElement);
+                });
+            }
+
+            const intraCityTable = document.getElementById('intraCityTable');
+            const intraCountryTable = document.getElementById('intraCountryTable');
+            const intraCityHeading = document.getElementById('intraCityHeading');
+            const intraCountryHeading = document.getElementById('intraCountryHeading');
+            const prev = document.getElementById('prev');
+            const next = document.getElementById('next');
+
+            let currentTiming = 'morning'; // Initial timing
+
+            function showIntraCityTable() {
+                intraCityTable.style.display = 'table-row-group';
+                intraCountryTable.style.display = 'none';
+                intraCityHeading.classList.add('active');
+                intraCountryHeading.classList.remove('active');
+                updateTimingDisplay('intraCityTable');
+            }
+
+            function showIntraCountryTable() {
+                intraCityTable.style.display = 'none';
+                intraCountryTable.style.display = 'table-row-group';
+                intraCityHeading.classList.remove('active');
+                intraCountryHeading.classList.add('active');
+                updateTimingDisplay('intraCountryTable');
+            }
+
+            function updateTimingDisplay(tableId) {
+                const table = document.getElementById(tableId);
+                const timings = ['morning', 'afternoon', 'evening'];
+                for (let i = 0; i < timings.length; i++) {
+                    const timing = timings[i];
+                    const rows = table.getElementsByClassName(timing);
+                    for (let j = 0; j < rows.length; j++) {
+                        const row = rows[j];
+                        if (timing === currentTiming) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    }
+                }
+            }
+
+            function switchTiming(nextTiming) {
+                const timings = ['morning', 'afternoon', 'evening'];
+                let currentIndex = timings.indexOf(currentTiming);
+
+                if (nextTiming) {
+                    currentIndex += 1; // Move to the next timing
+                    if (currentIndex >= timings.length) {
+                        currentIndex = 0; // Wrap around to the beginning
+                    }
+                } else {
+                    currentIndex -= 1; // Move to the previous timing
+                    if (currentIndex < 0) {
+                        currentIndex = timings.length - 1; // Wrap around to the end
+                    }
+                }
+
+                currentTiming = timings[currentIndex];
+
+                if (intraCityTable.style.display === 'table-row-group') {
+                    updateTimingDisplay('intraCityTable');
+                } else {
+                    updateTimingDisplay('intraCountryTable');
+                }
+            }
+
+            intraCityHeading.onclick = function () {
+                showIntraCityTable();
+            };
+
+            intraCountryHeading.onclick = function () {
+                showIntraCountryTable();
+            };
+
+            prev.onclick = function () {
+                switchTiming(false);
+            };
+
+            next.onclick = function () {
+                switchTiming(true);
+            };
+        });
+
+    </script>
+    
+    <script src="user.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-tnuAQdXBczz8hbNfjF1GeJ9tmh1d5BXUqj3roK54Kk51l1Zo7d1O69FdoZh0yI9G" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-8rCF9LYbAwV5w2ipIeeC7XqDfJtP/40MeNnVsReUktd57p12Xwxfp7LVGmPhT9B+" crossorigin="anonymous"></script>
+    
+   
+
+</body>
+
+</html>
