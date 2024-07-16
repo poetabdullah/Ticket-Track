@@ -1,93 +1,94 @@
+<!-- Author: Ambreen; GitHub: AmbreenAmbi04-->
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Ticket Track - Booked Ticket Inter</title>
-		<!-- Bootstrap CSS v5.2.1 -->
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-			crossorigin="anonymous"
-		/>
-		<link rel="stylesheet" href="CSS/style.css" />
-	</head>
-	<body>
-		<div class="ticket">
-			<div class="ticket-left">
-				<div class="ticket-header">
-					<h2>TRAIN TICKET</h2>
-				</div>
-				<div class="details">
-					<label>NAME OF PASSENGER:</label>
-					<p id="name"></p>
-				</div>
-				<div class="details">
-					<label>ID CARD:</label>
-					<p id="idcard"></p>
-				</div>
-				<div class="details">
-					<label>DEPARTURE STATION:</label>
-					<p id="departure"></p>
-				</div>
-				<div class="details">
-					<label>ARRIVAL STATION:</label>
-					<p id="arrival"></p>
-				</div>
-				<div class="details">
-					<label>DATE:</label>
-					<p id="date"></p>
-				</div>
-				<div class="details">
-					<label>TIME:</label>
-					<p id="time"></p>
-				</div>
-				<div class="details">
-					<label>CATEGORY:</label>
-					<p id="category"></p>
-				</div>
-				<div class="details">
-					<label>NUMBER OF PASSENGERS:</label>
-					<p id="passengers"></p>
-				</div>
-				<!-- Print Button -->
-				<div class="text-center mt-4">
-					<button id="printTicket" class="btn btn-secondary">
-						Print Ticket
-					</button>
-				</div>
-			</div>
-		</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ticket Track - Booked Ticket Inter</title>
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="CSS/style.css" />
+  </head>
+  <body>
+    <div class="ticket">
+      <div class="ticket-left">
+        <div class="ticket-header">
+          <h2>TRAIN TICKET</h2>
+        </div>
+        <div class="details">
+          <label>NAME OF PASSENGER:</label>
+          <p id="name"></p>
+        </div>
+        <div class="details">
+          <label>ID CARD:</label>
+          <p id="idcard"></p>
+        </div>
+        <div class="details">
+          <label>DEPARTURE STATION:</label>
+          <p id="departure"></p>
+        </div>
+        <div class="details">
+          <label>ARRIVAL STATION:</label>
+          <p id="arrival"></p>
+        </div>
+        <div class="details">
+          <label>DATE:</label>
+          <p id="date"></p>
+        </div>
+        <div class="details">
+          <label>TIME:</label>
+          <p id="time"></p>
+        </div>
+        <div class="details">
+          <label>CATEGORY:</label>
+          <p id="category"></p>
+        </div>
+        <div class="details">
+          <label>NUMBER OF PASSENGERS:</label>
+          <p id="passengers"></p>
+        </div>
+        <!-- Print Button -->
+        <div class="text-center mt-4">
+          <button id="printTicket" class="btn btn-secondary">
+            Print Ticket
+          </button>
+        </div>
+      </div>
+    </div>
 
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				const name = localStorage.getItem('name');
-				const idcard = localStorage.getItem('idcard');
-				const departure = localStorage.getItem('departure');
-				const arrival = localStorage.getItem('arrival');
-				const date = localStorage.getItem('date');
-				const time = localStorage.getItem('time');
-				const category = localStorage.getItem('category');
-				const passengers = localStorage.getItem('passengers');
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const name = localStorage.getItem("name");
+        const idcard = localStorage.getItem("idcard");
+        const departure = localStorage.getItem("departure");
+        const arrival = localStorage.getItem("arrival");
+        const date = localStorage.getItem("date");
+        const time = localStorage.getItem("time");
+        const category = localStorage.getItem("category");
+        const passengers = localStorage.getItem("passengers");
 
-				document.getElementById('name').textContent = name;
-				document.getElementById('idcard').textContent = idcard;
-				document.getElementById('departure').textContent = departure;
-				document.getElementById('arrival').textContent = arrival;
-				document.getElementById('date').textContent = date;
-				document.getElementById('time').textContent = time;
-				document.getElementById('category').textContent = category;
-				document.getElementById('passengers').textContent = passengers;
-			});
-			// Print ticket with delay
-			document
-				.getElementById('printTicket')
-				.addEventListener('click', function () {
-					setTimeout(function () {
-						window.print();
-					}, 1000); // 2000 milliseconds = 2 seconds delay
-				});
-		</script>
-	</body>
+        document.getElementById("name").textContent = name;
+        document.getElementById("idcard").textContent = idcard;
+        document.getElementById("departure").textContent = departure;
+        document.getElementById("arrival").textContent = arrival;
+        document.getElementById("date").textContent = date;
+        document.getElementById("time").textContent = time;
+        document.getElementById("category").textContent = category;
+        document.getElementById("passengers").textContent = passengers;
+      });
+      // Print ticket with delay
+      document
+        .getElementById("printTicket")
+        .addEventListener("click", function () {
+          setTimeout(function () {
+            window.print();
+          }, 1000); // 2000 milliseconds = 2 seconds delay
+        });
+    </script>
+  </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+// Author: Hammad; GitHub: Hammad448
 include 'db.php';
 
 $username = $_POST['username'];

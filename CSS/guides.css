@@ -1,7 +1,8 @@
+/* Author: Hamda */
+
 body {
   font-family: Arial, sans-serif;
 }
-
 
 /* Nav bar ends here */
 .banner {
@@ -154,7 +155,6 @@ body {
 .text-center {
   text-align: center !important;
 }
-.niv{
-
+.niv {
   gap: 5px !important;
 }

@@ -1,3 +1,5 @@
+/* Author: Abdullah Imran; GitHub: poetabdullah */
+
 /* Title of the Website */
 
 /* Tagline images slideshow */
@@ -135,8 +137,7 @@
   border-radius: 20px !important;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(1, 1, 1, 1) !important;
-  background-color: #66b2b2  !important;
-  
+  background-color: #66b2b2 !important;
 }
 
 .card img {
@@ -278,8 +279,3 @@
 .mt-custom {
   margin-top: 105px;
 }
-
-
-
-
-

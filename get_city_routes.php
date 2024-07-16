@@ -1,4 +1,6 @@
 <?php
+
+// Author : Abdullah Imran; GitHub: poetabdullah
 // Set the response type to JSON
 header('Content-Type: application/json');
 

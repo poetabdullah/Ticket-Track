@@ -1,4 +1,5 @@
 <?php
+// Author: Hamda
 // Database connection
 $servername = "localhost";
 $username = "root";
@@ -47,67 +48,71 @@ $conn->close();
     <title>Travel Guide</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="CSS/guides.css">
-    <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="CSS/nav_bar_guide.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="CSS/nav_bar_guide.css">
 </head>
 <style>
-  
+
 </style>
+
 <body>
-<div class="container-fluid px-0" style=" background-color: #1d4355;">
-      <div class="row gx-0" style=" background-color: #1d4355;">
-        <div class="col-md-12">
-          <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid navigation px-0">
-              <img src="Images/Ticket Track Card Prototype.png" width="110px" height="90px" />
-              <a class="navbar-brand title" href="index.html">Ticket Track</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
-                <ul class="navbar-nav mx-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.html">
-                      <i class="bi bi-house-door"></i> Home
-                    </a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="bi bi-ticket-perforated"></i> Book &#9660;
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="Inter_country.html"><i class="bi bi-globe"></i> Inter Country</a></li>
-                      <li><a class="dropdown-item" href="Intra_country.html"><i class="bi bi-map"></i> Intra Country</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="routes.html">
-                      <i class="bi bi-map"></i> Routes
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="guides.php">
-                      <i class="bi bi-book"></i> Guide
-                    </a>
-                  </li>
-                </ul>
-                <ul class="navbar-nav ms-auto" id="nav-user">
-                  <li class="nav-item">
-                    <a class="nav-link custom-login-btn" href="login.html">
-                      Login
-                    </a>
-                  </li>
-                </ul>
-              </div>
+    <div class="container-fluid px-0" style=" background-color: #1d4355;">
+        <div class="row gx-0" style=" background-color: #1d4355;">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                    <div class="container-fluid navigation px-0">
+                        <img src="Images/Ticket Track Card Prototype.png" width="110px" height="90px" />
+                        <a class="navbar-brand title" href="index.html">Ticket Track</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+                            <ul class="navbar-nav mx-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="index.html">
+                                        <i class="bi bi-house-door"></i> Home
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        <i class="bi bi-ticket-perforated"></i> Book &#9660;
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="Inter_country.html"><i
+                                                    class="bi bi-globe"></i> Inter Country</a></li>
+                                        <li><a class="dropdown-item" href="Intra_country.html"><i class="bi bi-map"></i>
+                                                Intra Country</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="routes.html">
+                                        <i class="bi bi-map"></i> Routes
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="guides.php">
+                                        <i class="bi bi-book"></i> Guide
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav ms-auto" id="nav-user">
+                                <li class="nav-item">
+                                    <a class="nav-link custom-login-btn" href="login.html">
+                                        Login
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
-          </nav>
         </div>
-      </div>
     </div>
-     <!-- Navigation bar ends here-->
+    <!-- Navigation bar ends here-->
     <!-- Banner-->
     <div class="container-fluid p-0">
         <div class="banner text-center">
@@ -298,12 +303,16 @@ $conn->close();
         });
     });
     </script>
-     
-  <script src="user.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-tnuAQdXBczz8hbNfjF1GeJ9tmh1d5BXUqj3roK54Kk51l1Zo7d1O69FdoZh0yI9G" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-8rCF9LYbAwV5w2ipIeeC7XqDfJtP/40MeNnVsReUktd57p12Xwxfp7LVGmPhT9B+" crossorigin="anonymous"></script>
-  
- 
+
+    <script src="user.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-tnuAQdXBczz8hbNfjF1GeJ9tmh1d5BXUqj3roK54Kk51l1Zo7d1O69FdoZh0yI9G" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-8rCF9LYbAwV5w2ipIeeC7XqDfJtP/40MeNnVsReUktd57p12Xwxfp7LVGmPhT9B+" crossorigin="anonymous">
+    </script>
+
+
 </body>
 
 </html>

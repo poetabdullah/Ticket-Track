@@ -1,4 +1,5 @@
 <?php
+// Author: Ambreen; GitHub: AmbreenAmbi04
 // Set the response type to JSON
 header('Content-Type: application/json');
 

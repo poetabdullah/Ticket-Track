@@ -1,3 +1,5 @@
+-- Author: Hammad; GitHub: Hammad448
+
 USE db_tickettrack;
 
 CREATE TABLE users (

@@ -1,4 +1,5 @@
 <?php
+// Author: Abdullah Imran; GitHub: poetabdullah
 $servername = "localhost";
 $username = "root";
 $password = "";
